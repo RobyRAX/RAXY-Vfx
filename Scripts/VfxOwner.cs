@@ -13,7 +13,7 @@ namespace RAXY.VfxManager
         public NamedTransformSet spawnPoint;
         [TitleGroup("Reference")]
         [SerializeField] 
-        List<VfxBankBaseSO> bankSoList;
+        List<VfxBankBaseSO> bankSoList = new();
         
         [TitleGroup("Data")]
         [ShowInInspector]
