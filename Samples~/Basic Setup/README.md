@@ -50,5 +50,6 @@ Inspector buttons on **Sample Vfx Demo Controller** mirror the same actions.
 ## Notes
 
 - Uses **direct prefab** references only (no Addressables setup).
+- Requires **URP** (material uses `Universal Render Pipeline/Lit`).
 - In Project Alice, `UnitCombatEventSequencerBase` calls `Request_SpawnVfx` with the spawn setting id from attack timelines.
 - Game-specific `VisualBank`, `HitFxManager`, and combat banks stay in your game project.

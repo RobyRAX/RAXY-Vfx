@@ -1,5 +1,11 @@
 # Changelog
 
+## [1.0.4] - 2026-03-16
+
+### Fixed
+
+- Basic Setup `Sample_DemoActor` material: correct URP Lit shader GUID for Unity 6 (was invalid → pink / InternalErrorShader).
+
 ## [1.0.3] - 2026-03-16
 
 ### Fixed
