@@ -17,6 +17,16 @@ RAXY VFX Manager provides a modular visual effects spawning system for Unity pro
 3. Attach `VfxOwner` to units that spawn or own VFX.
 4. Build requests via `VfxManager.BuildVfxSpawnRequest()` or manually, then call `SpawnVfx()`.
 
+## Samples
+
+Package Manager → **RAXY VFX Manager** → **Samples** → import **Basic Setup**.
+
+- Scene `Basic Setup.unity` with `VfxManager`, a demo unit (`VfxOwner` + spawn points), and a world target cube.
+- Demonstrates bank spawn (`Request_SpawnVfx`), tracked aura toggle, relative `Vector3` spawn, and manual world-space spawn (same pattern as game hit FX).
+- Uses direct prefab references only (no Addressables setup required).
+
+See `Samples~/Basic Setup/README.md` after import.
+
 ## Dependencies
 
 - **RAXY Core** (`com.raxy.core`) — addressable asset providers

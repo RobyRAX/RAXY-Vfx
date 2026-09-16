@@ -1,6 +1,6 @@
 {
   "name": "com.raxy.vfx",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "displayName": "RAXY VFX Manager",
   "author": {
     "name": "RobyRAX",
@@ -11,5 +11,12 @@
     "com.raxy.pooling": "1.0.0",
     "com.raxy.utility": "1.0.0",
     "com.unity.addressables": "3.1.0"
-  }
+  },
+  "samples": [
+    {
+      "displayName": "Basic Setup",
+      "description": "Minimal VfxManager scene: VfxBankSO, VfxOwner spawn points, bank spawn + tracked VFX + manual world spawn.",
+      "path": "Samples~/Basic Setup"
+    }
+  ]
 }
