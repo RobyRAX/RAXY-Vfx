@@ -49,15 +49,29 @@ namespace RAXY.VfxManager
         [HideReferenceObjectPicker]
         VfxSpawnRequest _debugReq;
 
-        void Start()
+        void Awake()
         {
+            InitializeBanksFromSerializedList();
+        }
+
+        void InitializeBanksFromSerializedList()
+        {
+            if (Banks == null)
+                Banks = new List<IVfxBank>();
+
             foreach (var bankSO in bankSoList)
             {
+                if (bankSO == null)
+                    continue;
+
                 AddBank(bankSO, false);
             }
 
             BuildDictionary();
         }
+
+        public bool AreBanksReady =>
+            VfxSpawnSettingDict != null && VfxSpawnSettingDict.Count > 0;
 
         [TitleGroup("Debug Function")]
         [Button]
@@ -156,8 +170,23 @@ namespace RAXY.VfxManager
         [Button]
         public void Request_SpawnVfx(string spawnSettingId)
         {
+            if (VfxManager.Instance == null)
+            {
+                Debug.LogWarning("[VfxOwner] VfxManager is not in the scene.");
+                return;
+            }
+
+            if (!AreBanksReady)
+            {
+                Debug.LogWarning("[VfxOwner] VFX banks are not initialized yet.");
+                return;
+            }
+
             var req = VfxManager.Instance.BuildVfxSpawnRequest(this, spawnSettingId, this);
             _debugReq = req;
+            if (req == null)
+                return;
+
             VfxManager.Instance.SpawnVfx(req);
         }
 

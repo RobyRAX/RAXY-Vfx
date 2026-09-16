@@ -21,9 +21,34 @@ namespace RAXY.VfxManager
         {
             var spawnSetting = bank.GetVfxSpawnSetting(spawnSettingId);
             if (spawnSetting == null)
+            {
+                Debug.LogWarning($"[VfxManager] Spawn setting '{spawnSettingId}' was not found on the VFX bank.");
                 return null;
-            var vfx = bank.GetVfxEntry(spawnSetting.vfxId).Asset;
-            
+            }
+
+            var entry = bank.GetVfxEntry(spawnSetting.vfxId);
+            if (entry == null)
+            {
+                Debug.LogWarning(
+                    $"[VfxManager] VFX entry '{spawnSetting.vfxId}' was not found (spawn setting '{spawnSettingId}').");
+                return null;
+            }
+
+            GameObject vfx = entry.UseAddressable ? entry.Asset : entry.DirectAsset;
+            if (vfx == null)
+            {
+                Debug.LogWarning(
+                    $"[VfxManager] VFX prefab is missing for '{spawnSetting.vfxId}' (spawn setting '{spawnSettingId}').");
+                return null;
+            }
+
+            if (vfx.scene.IsValid())
+            {
+                Debug.LogWarning(
+                    $"[VfxManager] VFX entry '{spawnSetting.vfxId}' must reference a project prefab, not a scene object.");
+                return null;
+            }
+
             var vfxInstance = vfx.GetComponent<VfxInstance>();
             if (vfxInstance == null)
             {

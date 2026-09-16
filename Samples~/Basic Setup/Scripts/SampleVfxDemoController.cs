@@ -1,3 +1,4 @@
+using System.Collections;
 using RAXY.VfxManager;
 using Sirenix.OdinInspector;
 using UnityEngine;
@@ -42,14 +43,25 @@ namespace RAXY.VfxManager.Samples
 
         void Start()
         {
-            _banksReady = true;
+            StartCoroutine(WaitForBanksThenLogHints());
+        }
+
+        IEnumerator WaitForBanksThenLogHints()
+        {
+            while (vfxOwner != null && !vfxOwner.AreBanksReady)
+                yield return null;
+
+            _banksReady = vfxOwner != null && vfxOwner.AreBanksReady;
+
+            if (!_banksReady)
+                yield break;
 
             if (logInputHintsOnStart)
             {
                 Debug.Log(
                     "[SampleVfxDemo] Keys: 1 = hand_burst (spawn point), 2 = foot_burst (relative), " +
                     "3 = aura_loop (tracked), 4 = world burst at target cube. " +
-                    "Inspector buttons work anytime after Play.");
+                    "Use inspector buttons during Play mode only.");
             }
         }
 
@@ -92,7 +104,7 @@ namespace RAXY.VfxManager.Samples
         }
 
         [TitleGroup("Bank Spawn")]
-        [Button]
+        [Button, DisableInEditorMode]
         public void SpawnHandBurst()
         {
             if (!EnsureOwner())
@@ -102,7 +114,7 @@ namespace RAXY.VfxManager.Samples
         }
 
         [TitleGroup("Bank Spawn")]
-        [Button]
+        [Button, DisableInEditorMode]
         public void SpawnFootBurst()
         {
             if (!EnsureOwner())
@@ -112,7 +124,7 @@ namespace RAXY.VfxManager.Samples
         }
 
         [TitleGroup("Tracked VFX")]
-        [Button]
+        [Button, DisableInEditorMode]
         public void SpawnOrToggleAura()
         {
             if (!EnsureOwner())
@@ -132,7 +144,7 @@ namespace RAXY.VfxManager.Samples
         }
 
         [TitleGroup("Tracked VFX")]
-        [Button]
+        [Button, DisableInEditorMode]
         public void DeactivateAura()
         {
             if (vfxOwner != null && vfxOwner.HasEntry(AuraLoopId))
@@ -140,7 +152,7 @@ namespace RAXY.VfxManager.Samples
         }
 
         [TitleGroup("Manual World Spawn")]
-        [Button]
+        [Button, DisableInEditorMode]
         public void SpawnWorldBurstAtTarget()
         {
             if (burstVfxPrefab == null)
@@ -174,11 +186,25 @@ namespace RAXY.VfxManager.Samples
 
         bool EnsureOwner()
         {
-            if (vfxOwner != null)
-                return true;
+            if (!Application.isPlaying)
+            {
+                Debug.LogWarning("[SampleVfxDemo] VFX demo controls only work in Play mode.");
+                return false;
+            }
 
-            Debug.LogWarning("[SampleVfxDemo] VfxOwner is missing on the demo actor.");
-            return false;
+            if (vfxOwner == null)
+            {
+                Debug.LogWarning("[SampleVfxDemo] VfxOwner is missing on the demo actor.");
+                return false;
+            }
+
+            if (!vfxOwner.AreBanksReady)
+            {
+                Debug.LogWarning("[SampleVfxDemo] VfxOwner banks are still loading.");
+                return false;
+            }
+
+            return true;
         }
     }
 }

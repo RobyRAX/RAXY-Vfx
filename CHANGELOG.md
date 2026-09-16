@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.0.6] - 2026-03-16
+
+### Fixed
+
+- `BuildVfxSpawnRequest`: validate spawn settings, VFX entries, and prefab references before `GetComponent` (avoids `MissingReferenceException` on destroyed or missing assets).
+- `VfxOwner`: load bank SOs in `Awake`; expose `AreBanksReady`; guard `Request_SpawnVfx` when manager or banks are unavailable.
+- Basic Setup sample: wait for banks before key input; Odin spawn buttons disabled outside Play mode.
+
 ## [1.0.5] - 2026-03-16
 
 ### Fixed
