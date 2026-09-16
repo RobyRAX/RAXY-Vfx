@@ -65,7 +65,7 @@ namespace RAXY.VfxManager.Samples
                 SpawnWorldBurstAtTarget();
         }
 
-        [TitleGroup("Bank spawn (Project Alice / EventSequencer VFX tag)")]
+        [TitleGroup("Bank Spawn")]
         [Button]
         public void SpawnHandBurst()
         {
@@ -75,7 +75,7 @@ namespace RAXY.VfxManager.Samples
             vfxOwner.Request_SpawnVfx(HandBurstId);
         }
 
-        [TitleGroup("Bank spawn (Project Alice / EventSequencer VFX tag)")]
+        [TitleGroup("Bank Spawn")]
         [Button]
         public void SpawnFootBurst()
         {
@@ -113,7 +113,7 @@ namespace RAXY.VfxManager.Samples
                 vfxOwner.DeactivateTrackedVfx(AuraLoopId);
         }
 
-        [TitleGroup("Manual world spawn (HitFxManager-style)")]
+        [TitleGroup("Manual World Spawn")]
         [Button]
         public void SpawnWorldBurstAtTarget()
         {
