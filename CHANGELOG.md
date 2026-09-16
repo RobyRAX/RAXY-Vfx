@@ -1,5 +1,11 @@
 # Changelog
 
+## [1.0.5] - 2026-03-16
+
+### Fixed
+
+- Basic Setup sample: digit key shortcuts use Input System when project active input handling is Input System only.
+
 ## [1.0.4] - 2026-03-16
 
 ### Fixed

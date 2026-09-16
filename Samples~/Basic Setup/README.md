@@ -51,5 +51,6 @@ Inspector buttons on **Sample Vfx Demo Controller** mirror the same actions.
 
 - Uses **direct prefab** references only (no Addressables setup).
 - Requires **URP** (material uses `Universal Render Pipeline/Lit`).
+- Keyboard shortcuts use **Input System** when active (`ENABLE_INPUT_SYSTEM`); legacy `Input` is used only if the old input manager is enabled.
 - In Project Alice, `UnitCombatEventSequencerBase` calls `Request_SpawnVfx` with the spawn setting id from attack timelines.
 - Game-specific `VisualBank`, `HitFxManager`, and combat banks stay in your game project.

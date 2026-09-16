@@ -1,6 +1,9 @@
 using RAXY.VfxManager;
 using Sirenix.OdinInspector;
 using UnityEngine;
+#if ENABLE_INPUT_SYSTEM
+using UnityEngine.InputSystem;
+#endif
 
 namespace RAXY.VfxManager.Samples
 {
@@ -55,14 +58,37 @@ namespace RAXY.VfxManager.Samples
             if (!_banksReady || vfxOwner == null)
                 return;
 
-            if (Input.GetKeyDown(KeyCode.Alpha1))
+            if (WasDigitKeyPressed(1))
                 SpawnHandBurst();
-            if (Input.GetKeyDown(KeyCode.Alpha2))
+            if (WasDigitKeyPressed(2))
                 SpawnFootBurst();
-            if (Input.GetKeyDown(KeyCode.Alpha3))
+            if (WasDigitKeyPressed(3))
                 SpawnOrToggleAura();
-            if (Input.GetKeyDown(KeyCode.Alpha4))
+            if (WasDigitKeyPressed(4))
                 SpawnWorldBurstAtTarget();
+        }
+
+        static bool WasDigitKeyPressed(int digit)
+        {
+#if ENABLE_INPUT_SYSTEM
+            var keyboard = Keyboard.current;
+            if (keyboard == null)
+                return false;
+
+            return digit switch
+            {
+                1 => keyboard.digit1Key.wasPressedThisFrame,
+                2 => keyboard.digit2Key.wasPressedThisFrame,
+                3 => keyboard.digit3Key.wasPressedThisFrame,
+                4 => keyboard.digit4Key.wasPressedThisFrame,
+                _ => false
+            };
+#else
+            if (digit < 0 || digit > 9)
+                return false;
+
+            return Input.GetKeyDown((KeyCode)((int)KeyCode.Alpha0 + digit));
+#endif
         }
 
         [TitleGroup("Bank Spawn")]
