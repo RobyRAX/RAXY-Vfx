@@ -37,7 +37,7 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: FX_MT_LightSparks_01
-  m_Shader: {fileID: -6465566751694194690, guid: e4c314a5c99ab7845b9f7057f076ddf4, type: 3}
+  m_Shader: {fileID: -6465566751694194690, guid: e2d9a7e035264c68b16b6000b26fb883, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords:
@@ -88,7 +88,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTexture:
-        m_Texture: {fileID: 2800000, guid: 37bc7e5664c51f74b9bf28dc028d0d16, type: 3}
+        m_Texture: {fileID: 2800000, guid: ae2783a24df24744b650b05523ae18f1, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MetallicGlossMap:

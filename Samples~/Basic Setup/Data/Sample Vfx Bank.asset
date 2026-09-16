@@ -15,7 +15,7 @@ MonoBehaviour:
   vfxBank:
     vfxEntries:
     - useAddressable: 0
-      directAsset: {fileID: 100100000, guid: 8789911fa0d5ee347b704d5cb0eb6d3d, type: 3}
+      directAsset: {fileID: 100100000, guid: 7f303d8c14334bde82b185ff76af7aec, type: 3}
       assetReference:
         m_AssetGUID: 
         m_SubObjectName: 
@@ -24,7 +24,7 @@ MonoBehaviour:
         m_EditorAssetChanged: 0
       vfxId: claw_slash
     - useAddressable: 0
-      directAsset: {fileID: 100100000, guid: f1b4fc95cc5a1644a8d9da75525cdb0e, type: 3}
+      directAsset: {fileID: 100100000, guid: 5fc3b404a4714a8b8725b904c12a7525, type: 3}
       assetReference:
         m_AssetGUID: 
         m_SubObjectName: 

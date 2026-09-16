@@ -34,18 +34,15 @@ namespace RAXY.VfxManager
                 return null;
             }
 
-            GameObject vfx = entry.UseAddressable ? entry.Asset : entry.DirectAsset;
-            if (vfx == null)
-            {
-                Debug.LogWarning(
-                    $"[VfxManager] VFX prefab is missing for '{spawnSetting.vfxId}' (spawn setting '{spawnSettingId}').");
-                return null;
-            }
+            GameObject vfx = null;
+            if (bank is VfxOwner vfxOwnerBank)
+                vfx = vfxOwnerBank.GetCachedPrefabRoot(spawnSetting.vfxId);
 
-            if (vfx.scene.IsValid())
+            if (!VfxPrefabUtility.TryGetPrefabRoot(vfx, out vfx, out var prefabFailure) &&
+                !VfxPrefabUtility.TryGetPrefabRoot(entry, out vfx, out prefabFailure))
             {
                 Debug.LogWarning(
-                    $"[VfxManager] VFX entry '{spawnSetting.vfxId}' must reference a project prefab, not a scene object.");
+                    $"[VfxManager] Cannot resolve VFX prefab for '{spawnSetting.vfxId}' (spawn setting '{spawnSettingId}'): {prefabFailure}");
                 return null;
             }
 

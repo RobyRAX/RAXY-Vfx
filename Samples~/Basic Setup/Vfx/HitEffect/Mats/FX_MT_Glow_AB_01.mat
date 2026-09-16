@@ -37,7 +37,7 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: FX_MT_Glow_AB_01
-  m_Shader: {fileID: -6465566751694194690, guid: e4c314a5c99ab7845b9f7057f076ddf4, type: 3}
+  m_Shader: {fileID: -6465566751694194690, guid: e2d9a7e035264c68b16b6000b26fb883, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords:
@@ -88,7 +88,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTexture:
-        m_Texture: {fileID: 2800000, guid: 2f6642b43dc405d498acba7e288c068c, type: 3}
+        m_Texture: {fileID: 2800000, guid: 14ee9195c11e4d53b46bcc6f5d67012f, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MetallicGlossMap:

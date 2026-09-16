@@ -37,7 +37,7 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: FX_MT_RadialDissolve_01
-  m_Shader: {fileID: -6465566751694194690, guid: 81a925152c3a1724286eb724c3ab0f15, type: 3}
+  m_Shader: {fileID: -6465566751694194690, guid: 209189d923a94b129e9944fa8d0c1806, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords:
@@ -87,7 +87,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTexture:
-        m_Texture: {fileID: 2800000, guid: ebde58515f079544287da77d518a6497, type: 3}
+        m_Texture: {fileID: 2800000, guid: 35273451edc44cd1aff58fecfee483c3, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MetallicGlossMap:

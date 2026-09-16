@@ -71,7 +71,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 7a8b9c0d1e2f3a4b5c6d7e8f9a0b1c2d, type: 2}
+  - {fileID: 2100000, guid: 34998da3886a4c599e0137f5f6cb70b4, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -132,7 +132,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: RAXY.VfxManager::RAXY.VfxManager.VfxOwner
   spawnPoint: {fileID: 900023}
   bankSoList:
-  - {fileID: 11400000, guid: 5d7f111e4908c974fb3bb2ea8083cb08, type: 2}
+  - {fileID: 11400000, guid: 3bbec85574d447d0937f03f4e53c3f5f, type: 2}
 --- !u!114 &900007
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -142,12 +142,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 900001}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4edf1ac6ac1bb6343b089a6f2bb2bac7, type: 3}
+  m_Script: {fileID: 11500000, guid: 59552171f07540dc9398ac845a5a2a63, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::RAXY.VfxManager.Samples.SampleVfxDemoController
   vfxOwner: {fileID: 900006}
   worldBurstTarget: {fileID: 0}
-  burstVfxPrefab: {fileID: 5459271221526932856, guid: f1b4fc95cc5a1644a8d9da75525cdb0e, type: 3}
+  burstVfxPrefab: {fileID: 5459271221526932856, guid: 5fc3b404a4714a8b8725b904c12a7525, type: 3}
   logInputHintsOnStart: 1
 --- !u!1 &900011
 GameObject:

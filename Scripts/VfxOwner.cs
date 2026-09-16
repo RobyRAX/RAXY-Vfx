@@ -49,6 +49,8 @@ namespace RAXY.VfxManager
         [HideReferenceObjectPicker]
         VfxSpawnRequest _debugReq;
 
+        Dictionary<string, GameObject> _prefabRootCache = new();
+
         void Awake()
         {
             InitializeBanksFromSerializedList();
@@ -96,6 +98,35 @@ namespace RAXY.VfxManager
             foreach (var vfxSpawnPoint in VfxSpawnSettings)
             {
                 VfxSpawnSettingDict.Add(vfxSpawnPoint.spawnSettingId, vfxSpawnPoint);
+            }
+
+            CachePrefabRoots();
+        }
+
+        public GameObject GetCachedPrefabRoot(string vfxId)
+        {
+            if (_prefabRootCache == null || string.IsNullOrEmpty(vfxId))
+                return null;
+
+            if (_prefabRootCache.TryGetValue(vfxId, out var cached) && VfxPrefabUtility.IsAlive(cached))
+                return cached;
+
+            return null;
+        }
+
+        void CachePrefabRoots()
+        {
+            _prefabRootCache = new Dictionary<string, GameObject>();
+            if (VfxEntries == null)
+                return;
+
+            foreach (var entry in VfxEntries)
+            {
+                if (entry == null || string.IsNullOrEmpty(entry.vfxId))
+                    continue;
+
+                if (VfxPrefabUtility.TryGetPrefabRoot(entry, out var root, out _))
+                    _prefabRootCache[entry.vfxId] = root;
             }
         }
 

@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.0.7] - 2026-03-16
+
+### Fixed
+
+- `BuildVfxSpawnRequest`: safe prefab resolution (`VfxPrefabUtility`) so destroyed/missing refs no longer throw on `GameObject.scene`.
+- `VfxOwner`: cache project prefab roots when banks load (stable spawn even if `VfxEntry.directAsset` is corrupted at runtime).
+- **Basic Setup** sample: regenerate unique asset GUIDs so importing the sample into Project Alice does not collide with existing Claw/Hit VFX GUIDs (was a common cause of destroyed prefab references).
+
 ## [1.0.6] - 2026-03-16
 
 ### Fixed
