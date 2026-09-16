@@ -147,7 +147,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::RAXY.VfxManager.Samples.SampleVfxDemoController
   vfxOwner: {fileID: 900006}
   worldBurstTarget: {fileID: 0}
-  burstVfxPrefab: {fileID: 663621662658747019, guid: 3af9af6199caa824ab9be4e6f36bb8a3, type: 3}
+  burstVfxPrefab: {fileID: 5459271221526932856, guid: f1b4fc95cc5a1644a8d9da75525cdb0e, type: 3}
   logInputHintsOnStart: 1
 --- !u!1 &900011
 GameObject:

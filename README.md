@@ -23,7 +23,7 @@ Package Manager → **RAXY VFX Manager** → **Samples** → import **Basic Setu
 
 - Scene `Basic Setup.unity` with `VfxManager`, a demo unit (`VfxOwner` + spawn points), and a world target cube.
 - Demonstrates bank spawn (`Request_SpawnVfx`), tracked aura toggle, relative `Vector3` spawn, and manual world-space spawn (same pattern as game hit FX).
-- Uses direct prefab references only (no Addressables setup required).
+- Uses direct prefab references only (no Addressables setup required). VFX art is from Project Alice Basic Claw (`Claw` + `Hit-Effect_v02`).
 
 See `Samples~/Basic Setup/README.md` after import.
 

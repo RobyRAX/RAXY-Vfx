@@ -2,6 +2,8 @@
 
 Minimal **RAXY VFX Manager** demo aligned with Project Alice wiring: `VfxManager` + `VfxBankSO` + `VfxOwner` + spawn settings, plus a manual world-space spawn like game `HitFxManager`.
 
+VFX prefabs are copied from **Project Alice — Basic Claw weapon** (`Claw.prefab`, `Hit-Effect_v02.prefab`) with materials, shaders, and textures so the sample looks like real combat VFX.
+
 ## Contents
 
 | Asset | Role |
@@ -9,17 +11,23 @@ Minimal **RAXY VFX Manager** demo aligned with Project Alice wiring: `VfxManager
 | `Basic Setup.unity` | Playable scene (camera, light, ground, bootstrap, demo actor, world target cube) |
 | `Prefabs/Sample VFX Bootstrap.prefab` | `VfxManager` singleton host |
 | `Prefabs/Sample Vfx Demo Actor.prefab` | Capsule unit with `VfxOwner`, `NamedTransformSet` (`Hand`), and `SampleVfxDemoController` |
-| `Data/Sample Vfx Bank.asset` | `VfxBankSO` with direct prefab entry `sample_burst` |
-| `Vfx/Sample Burst.prefab` | `ParticleSystem` + `VfxInstance` |
+| `Data/Sample Vfx Bank.asset` | `VfxBankSO` with `claw_slash` + `hit_impact` |
+| `Vfx/Claw Effect/...` | Claw slash prefab + dependencies |
+| `Vfx/HitEffect/...` | Hit impact prefab + dependencies |
 | `Scripts/SampleVfxDemoController.cs` | Keyboard + Odin debug buttons |
 
-### Spawn settings in the bank
+### Bank entries and spawn settings
 
-| Id | Type | What it shows |
-|----|------|----------------|
-| `hand_burst` | `VfxSpawnPoint` → `Hand` | Same pattern as combat timeline `VFX` tag → `Request_SpawnVfx(id)` |
-| `foot_burst` | Relative `Vector3` | One-shot burst offset below the unit |
-| `aura_loop` | `VfxSpawnPoint` + `registerToOwner` | Tracked VFX; toggle with key **3** or inspector |
+| `vfxId` | Prefab | Spawn setting |
+|---------|--------|----------------|
+| `claw_slash` | `Claw.prefab` | `hand_burst`, `aura_loop` (tracked) |
+| `hit_impact` | `Hit-Effect_v02.prefab` | `foot_burst`; manual world burst (key **4**) |
+
+| Spawn id | Type | What it shows |
+|----------|------|----------------|
+| `hand_burst` | `VfxSpawnPoint` → `Hand` | Combat timeline `VFX` tag → `Request_SpawnVfx(id)` |
+| `foot_burst` | Relative `Vector3` | Hit-style burst below the unit |
+| `aura_loop` | `VfxSpawnPoint` + `registerToOwner` | Tracked claw at hand; toggle with **3** |
 
 ## Import
 
@@ -32,10 +40,10 @@ Minimal **RAXY VFX Manager** demo aligned with Project Alice wiring: `VfxManager
 
 | Input | Action |
 |-------|--------|
-| **1** | `hand_burst` via `VfxOwner.Request_SpawnVfx` |
-| **2** | `foot_burst` |
-| **3** | Spawn / toggle tracked `aura_loop` |
-| **4** | Manual `VfxSpawnRequest` at **World Burst Target** cube (hit-FX style) |
+| **1** | `hand_burst` (claw slash at `Hand`) |
+| **2** | `foot_burst` (hit impact, relative) |
+| **3** | Spawn / toggle tracked `aura_loop` (claw) |
+| **4** | Manual `VfxSpawnRequest` at **World Burst Target** cube (`Hit-Effect_v02`) |
 
 Inspector buttons on **Sample Vfx Demo Controller** mirror the same actions.
 

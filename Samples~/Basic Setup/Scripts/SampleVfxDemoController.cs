@@ -119,7 +119,7 @@ namespace RAXY.VfxManager.Samples
         {
             if (burstVfxPrefab == null)
             {
-                Debug.LogWarning("[SampleVfxDemo] Assign burstVfxPrefab (Sample Burst) on the controller.");
+                Debug.LogWarning("[SampleVfxDemo] Assign burstVfxPrefab (Hit-Effect_v02) on the controller.");
                 return;
             }
 

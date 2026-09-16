@@ -15,17 +15,26 @@ MonoBehaviour:
   vfxBank:
     vfxEntries:
     - useAddressable: 0
-      directAsset: {fileID: 100100000, guid: 3af9af6199caa824ab9be4e6f36bb8a3, type: 3}
+      directAsset: {fileID: 100100000, guid: 8789911fa0d5ee347b704d5cb0eb6d3d, type: 3}
       assetReference:
         m_AssetGUID: 
         m_SubObjectName: 
         m_SubObjectType: 
         m_SubObjectGUID: 
         m_EditorAssetChanged: 0
-      vfxId: sample_burst
+      vfxId: claw_slash
+    - useAddressable: 0
+      directAsset: {fileID: 100100000, guid: f1b4fc95cc5a1644a8d9da75525cdb0e, type: 3}
+      assetReference:
+        m_AssetGUID: 
+        m_SubObjectName: 
+        m_SubObjectType: 
+        m_SubObjectGUID: 
+        m_EditorAssetChanged: 0
+      vfxId: hit_impact
     vfxSpawnSettings:
     - spawnSettingId: hand_burst
-      vfxId: sample_burst
+      vfxId: claw_slash
       spawnPointType: 2
       registerToOwner: 0
       setAsChild: 0
@@ -36,7 +45,7 @@ MonoBehaviour:
       vfxScaleOverride_Vector3: {x: 1, y: 1, z: 1}
       spawnPointEntryId: Hand
     - spawnSettingId: foot_burst
-      vfxId: sample_burst
+      vfxId: hit_impact
       spawnPointType: 0
       registerToOwner: 0
       setAsChild: 0
@@ -47,7 +56,7 @@ MonoBehaviour:
       vfxScaleOverride_Vector3: {x: 1, y: 1, z: 1}
       spawnPointEntryId: 
     - spawnSettingId: aura_loop
-      vfxId: sample_burst
+      vfxId: claw_slash
       spawnPointType: 2
       registerToOwner: 1
       setAsChild: 0
