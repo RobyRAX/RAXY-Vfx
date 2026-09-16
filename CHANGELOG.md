@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.0.3] - 2026-03-16
+
+### Fixed
+
+- Basic Setup: demo actor uses bundled URP Lit material (fixes pink capsule in URP projects).
+- Basic Setup scene: normalize main camera rotation (fixes `QuaternionToEuler` warning on scene open).
+
 ## [1.0.2] - 2026-03-16
 
 ### Fixed
