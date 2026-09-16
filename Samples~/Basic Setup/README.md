@@ -4,12 +4,13 @@ Minimal **RAXY VFX Manager** demo aligned with Project Alice wiring: `VfxManager
 
 VFX prefabs are copied from **Project Alice — Basic Claw weapon** (`Claw.prefab`, `Hit-Effect_v02.prefab`) with materials, shaders, and textures so the sample looks like real combat VFX.
 
+If **Sample Vfx Bank** entries show empty prefab slots after import, use **RAXY → VFX → Wire Sample Vfx Bank Prefabs** (or re-import the sample on package **1.0.9+**, which wires on import).
+
 ## Contents
 
 | Asset | Role |
 |-------|------|
-| `Basic Setup.unity` | Playable scene (camera, light, ground, bootstrap, demo actor, world target cube) |
-| `Prefabs/Sample VFX Bootstrap.prefab` | `VfxManager` singleton host |
+| `Basic Setup.unity` | Playable scene (camera, light, ground, demo actor, world target cube). `VfxManager` is created on first spawn. |
 | `Prefabs/Sample Vfx Demo Actor.prefab` | Capsule unit with `VfxOwner`, `NamedTransformSet` (`Hand`), and `SampleVfxDemoController` |
 | `Data/Sample Vfx Bank.asset` | `VfxBankSO` with `claw_slash` + `hit_impact` |
 | `Vfx/Claw Effect/...` | Claw slash prefab + dependencies |

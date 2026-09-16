@@ -1,5 +1,40 @@
 # Changelog
 
+## [1.0.11] - 2026-03-16
+
+### Removed
+
+- Basic Setup: **Sample VFX Bootstrap** prefab and scene instance (`VfxManager` lazy host only).
+
+### Changed
+
+- Basic Setup scene: Main Camera Y rotation ~17.79° (matches sample authoring).
+
+## [1.0.10] - 2026-03-16
+
+### Changed
+
+- `VfxEntry`: prefab data lives under nested `vfxPrefabProvider` (composition over inheriting `AddressableAssetProviderGameObject`).
+- **Sample Vfx Bank** YAML and editor wiring updated for the new layout.
+
+### Fixed
+
+- **Sample Vfx Bank**: `directAsset` references use root prefab file IDs (`Claw` / `Hit-Effect_v02`) so entries resolve in the Inspector after import.
+
+## [1.0.9] - 2026-03-16
+
+### Fixed
+
+- `VfxEntry`: Odin **Prefab** field for direct (non-addressable) entries so bank rows show the assigned prefab.
+- Editor: auto-wire **Sample Vfx Bank** prefabs on import + menu **RAXY → VFX → Wire Sample Vfx Bank Prefabs** (fixes missing/broken refs after sample re-import or GUID remap).
+
+## [1.0.8] - 2026-03-16
+
+### Changed
+
+- `VfxManager`: lazy `DontDestroyOnLoad` host (same pattern as `AddressableService`); no scene placement required.
+- `BuildVfxSpawnRequest` and `SpawnVfx` are **static** APIs (`VfxManager.SpawnVfx`, etc.); removed `Singleton<T>` base.
+
 ## [1.0.7] - 2026-03-16
 
 ### Fixed

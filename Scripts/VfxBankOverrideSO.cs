@@ -119,11 +119,15 @@ namespace RAXY.VfxManager
 
                     if (selectedOverrider != null && selectedOverrider.Asset != null)
                     {
-                        newVfxEntry.Asset = selectedOverrider.Asset;
+                        newVfxEntry.SetDirectPrefabReference(selectedOverrider.Asset);
                     }
-                    else
+                    else if (entry.Asset != null)
                     {
-                        newVfxEntry.Asset = entry.Asset;
+                        newVfxEntry.SetDirectPrefabReference(entry.Asset);
+                    }
+                    else if (entry.vfxPrefabProvider != null)
+                    {
+                        newVfxEntry.vfxPrefabProvider = entry.vfxPrefabProvider;
                     }
 
                     newEntries.Add(newVfxEntry);

@@ -1,15 +1,59 @@
-using System;
-using System.Collections.Generic;
 using RAXY.Pooling;
-using RAXY.Utility;
 using Sirenix.OdinInspector;
 using UnityEngine;
 
 namespace RAXY.VfxManager
 {
-    public class VfxManager : Singleton<VfxManager>
+    public class VfxManager : MonoBehaviour
     {
-        [SerializeField] VfxSpawnRequest testRequest;
+        static VfxManager _instance;
+
+        public static VfxManager Instance
+        {
+            get
+            {
+                if (_instance == null)
+                {
+                    _instance = FindAnyObjectByType<VfxManager>();
+
+                    if (_instance == null)
+                    {
+                        var go = new GameObject(nameof(VfxManager));
+                        _instance = go.AddComponent<VfxManager>();
+                        DontDestroyOnLoad(go);
+                    }
+                }
+
+                return _instance;
+            }
+        }
+
+        [SerializeField]
+        VfxSpawnRequest testRequest;
+
+        [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.SubsystemRegistration)]
+        static void ResetStatics()
+        {
+            _instance = null;
+        }
+
+        void Awake()
+        {
+            if (_instance != null && _instance != this)
+            {
+                Debug.LogWarning("[VfxManager] Trying to create a second instance. Destroying the duplicate.");
+                Destroy(gameObject);
+                return;
+            }
+
+            _instance = this;
+        }
+
+        void OnDestroy()
+        {
+            if (_instance == this)
+                _instance = null;
+        }
 
         [Button]
         void SpawnTestRequest()
@@ -17,8 +61,14 @@ namespace RAXY.VfxManager
             SpawnVfx(testRequest);
         }
 
-        public VfxSpawnRequest BuildVfxSpawnRequest(IVfxBank bank, string spawnSettingId, VfxOwner owner, bool addComponentIfMissing = false)
+        public static VfxSpawnRequest BuildVfxSpawnRequest(
+            IVfxBank bank,
+            string spawnSettingId,
+            VfxOwner owner,
+            bool addComponentIfMissing = false)
         {
+            _ = Instance;
+
             var spawnSetting = bank.GetVfxSpawnSetting(spawnSettingId);
             if (spawnSetting == null)
             {
@@ -79,18 +129,19 @@ namespace RAXY.VfxManager
             return newReq;
         }
 
-        public void SpawnVfx(VfxSpawnRequest req)
+        public static void SpawnVfx(VfxSpawnRequest req)
         {
+            _ = Instance;
+
             if (req == null)
                 return;
             if (req.vfxPrefab == null)
                 return;
 
-            bool alreadyRegistered = req.registerToOwner && 
-                                        req.owner &&
-                                        req.owner.HasEntry(req.reqId);
+            bool alreadyRegistered = req.registerToOwner &&
+                                     req.owner &&
+                                     req.owner.HasEntry(req.reqId);
 
-            // 1. Ambil object (pooling atau instantiate)
             VfxInstance vfxInstance;
             var originalPoolable = req.vfxPrefab.PoolableObject;
 
@@ -101,14 +152,14 @@ namespace RAXY.VfxManager
             }
             else
             {
-                if (originalPoolable != null) // if (req.vfxPrefab.TryGetComponent(out PoolableObject originalPoolable))
+                if (originalPoolable != null)
                 {
                     var pooledObj = ObjectPoolService.Instance.GetPoolableObject(originalPoolable);
                     vfxInstance = pooledObj.GetComponent<VfxInstance>();
                 }
                 else
                 {
-                    vfxInstance = Instantiate(req.vfxPrefab);
+                    vfxInstance = Object.Instantiate(req.vfxPrefab);
                 }
             }
 
@@ -120,7 +171,6 @@ namespace RAXY.VfxManager
                 req.setAsChild = true;
             }
 
-            // 2. Tentukan spawn position, rotation, scale
             Vector3 spawnPos = default;
             Quaternion spawnRot = default;
 
@@ -167,7 +217,7 @@ namespace RAXY.VfxManager
 
                 if (req.setAsChild)
                 {
-                    if (req.spawnPoint_objectTransform) 
+                    if (req.spawnPoint_objectTransform)
                         vfxInstance.transform.SetParent(req.spawnPoint_objectTransform);
                     else if (req.owner)
                         vfxInstance.transform.SetParent(req.owner.transform);
@@ -181,9 +231,8 @@ namespace RAXY.VfxManager
                     Debug.LogWarning($"[VfxManager] Owner {req.owner} has no spawnPoint.");
                     return;
                 }
-                Transform selectedSlot;
 
-                selectedSlot = spawnPoint.GetEntry(req.spawnPointEntryId).tranform;
+                Transform selectedSlot = spawnPoint.GetEntry(req.spawnPointEntryId).tranform;
 
                 spawnPos = selectedSlot.position;
                 spawnRot = selectedSlot.rotation;
@@ -199,7 +248,6 @@ namespace RAXY.VfxManager
                 }
             }
 
-            // Apply position and rotation
             vfxInstance.transform.SetPositionAndRotation(spawnPos, spawnRot);
             req.setAsChild = false;
         }
@@ -207,6 +255,8 @@ namespace RAXY.VfxManager
 
     public enum VfxSpawnRequestPointType
     {
-        Vector3, ObjectTransform, VfxSpawnPoint 
+        Vector3,
+        ObjectTransform,
+        VfxSpawnPoint
     }
 }

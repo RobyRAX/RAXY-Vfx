@@ -328,35 +328,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
---- !u!1001 &1001001
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 800001, guid: 5334a8cc1d4646f09296ddb9748831a3, type: 3}
-      propertyPath: m_Name
-      value: Sample VFX Bootstrap
-      objectReference: {fileID: 0}
-    - target: {fileID: 800002, guid: 5334a8cc1d4646f09296ddb9748831a3, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 800002, guid: 5334a8cc1d4646f09296ddb9748831a3, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 800002, guid: 5334a8cc1d4646f09296ddb9748831a3, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 5334a8cc1d4646f09296ddb9748831a3, type: 3}
 --- !u!1001 &1002001
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -588,18 +559,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1981774118}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.12607862, y: -0.2566048, z: 0.033782664, w: 0.9576622}
+  m_LocalRotation: {x: 0.1289564, y: 0.15330257, z: -0.020182673, w: 0.9795209}
   m_LocalPosition: {x: -1.5, y: 2.5, z: -5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 15, y: -30, z: 0}
---- !u!4 &1001002 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 800002, guid: 5334a8cc1d4646f09296ddb9748831a3, type: 3}
-  m_PrefabInstance: {fileID: 1001001}
-  m_PrefabAsset: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 15, y: 17.79, z: 0}
 --- !u!4 &1002002 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 900002, guid: 6b04b07ea3fc4ae0a602c49ec4b7d2b0, type: 3}
@@ -613,5 +579,4 @@ SceneRoots:
   - {fileID: 700154374}
   - {fileID: 941787153}
   - {fileID: 600002}
-  - {fileID: 1001002}
   - {fileID: 1002002}

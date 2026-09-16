@@ -181,7 +181,7 @@ namespace RAXY.VfxManager.Samples
                 spawnPointEntryId = string.Empty
             };
 
-            VfxManager.Instance.SpawnVfx(vfxSpawnReq);
+            VfxManager.SpawnVfx(vfxSpawnReq);
         }
 
         bool EnsureOwner()

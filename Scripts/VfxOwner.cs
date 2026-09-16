@@ -201,24 +201,18 @@ namespace RAXY.VfxManager
         [Button]
         public void Request_SpawnVfx(string spawnSettingId)
         {
-            if (VfxManager.Instance == null)
-            {
-                Debug.LogWarning("[VfxOwner] VfxManager is not in the scene.");
-                return;
-            }
-
             if (!AreBanksReady)
             {
                 Debug.LogWarning("[VfxOwner] VFX banks are not initialized yet.");
                 return;
             }
 
-            var req = VfxManager.Instance.BuildVfxSpawnRequest(this, spawnSettingId, this);
+            var req = VfxManager.BuildVfxSpawnRequest(this, spawnSettingId, this);
             _debugReq = req;
             if (req == null)
                 return;
 
-            VfxManager.Instance.SpawnVfx(req);
+            VfxManager.SpawnVfx(req);
         }
 
         [Button, HorizontalGroup("Debug Function/Op")]
